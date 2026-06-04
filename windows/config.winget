@@ -1,0 +1,321 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    ###########################################################################
+    # 1) WINDOWS OPTIONAL FEATURES (VALID OPTIONAL FEATURE NAMES)
+    ###########################################################################
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: opensshClientFeature
+      directives:
+        description: Ensure OpenSSH Client is enabled
+      settings:
+        Name: OpenSSH.Client
+        Ensure: Present
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: wslFeature
+      directives:
+        description: Ensure Windows Subsystem for Linux feature is enabled
+      settings:
+        Name: Microsoft-Windows-Subsystem-Linux
+        Ensure: Present
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: vmPlatformFeature
+      directives:
+        description: Ensure Virtual Machine Platform feature is enabled (WSL2)
+      settings:
+        Name: VirtualMachinePlatform
+        Ensure: Present
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: windowsSandboxFeature
+      directives:
+        description: Ensure Windows Sandbox feature is enabled
+      settings:
+        Name: Containers-DisposableClientVM
+        Ensure: Present
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: windowsContainerFeature
+      directives:
+        description: Ensure Containers is enabled
+      settings:
+        Name: Containers
+        Ensure: Present
+
+    ###########################################################################
+    # 2) SYSTEM SETTINGS
+    ###########################################################################
+
+    - resource: PSDscResources/Registry
+      id: enableSudo
+      directives:
+        description: Enable Sudo for Windows (Windows 11 24H2+)
+      settings:
+        Key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo
+        ValueName: Enabled
+        ValueType: Dword
+        ValueData:
+          - "1"
+        Ensure: Present
+
+    - resource: PSDscResources/Registry
+      id: setSudoMode
+      dependsOn:
+        - enableSudo
+      directives:
+        description: Set Sudo mode to Input Disabled (secure mode)
+      settings:
+        Key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo
+        ValueName: DefaultMode
+        ValueType: Dword
+        ValueData:
+          - "2"
+        Ensure: Present
+
+    - resource: PSDscResources/Registry
+      id: enableLongPaths
+      directives:
+        description: Remove MAX_PATH limitation
+      settings:
+        Key: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem
+        ValueName: LongPathsEnabled
+        ValueType: Dword
+        ValueData:
+          - "1"
+        Ensure: Present
+
+    - resource: Microsoft.Windows.Settings/WindowsSettings
+      directives:
+        description: Enable Developer Mode
+        allowPrerelease: true
+        securityContext: elevated
+      settings:
+        DeveloperMode: true
+
+    # WinGetSettings resource commented out - not available in this environment
+    # Error: configuration unit was not in the module as expected
+    # - resource: Microsoft.WinGet.DSC/WinGetSettings
+    #   id: wingetMachineScopeDefault
+    #   directives:
+    #     description: Make WinGet default to machine-scope installs
+    #   settings:
+    #     installBehavior:
+    #       preferences:
+    #         scope: machine
+
+    ###########################################################################
+    # 3) REMOVE PREINSTALLED / STORE APPS
+    ###########################################################################
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: removeSolitaire
+      settings:
+        id: 9WZDNCRFJ3PV
+        source: msstore
+        ensure: Absent
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: removeLinkedIn
+      settings:
+        id: 9NDLX60WX4KQ
+        source: msstore
+        ensure: Absent
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: removeOfficeHub
+      settings:
+        id: 9MSVH128X2ZT
+        source: msstore
+        ensure: Absent
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: removeClipchamp
+      settings:
+        id: 9P1J8S7CCWWT
+        source: msstore
+        ensure: Absent
+
+    ###########################################################################
+    # 4) CORE TOOLING AND PACKAGES
+    # Keep one package per resource to avoid unsupported "packages:" list usage.
+    ###########################################################################
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgWindowsTerminal
+      settings:
+        id: Microsoft.WindowsTerminal
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgVSCode
+      settings:
+        id: Microsoft.VisualStudioCode
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgObsStudio
+      settings:
+        id: OBSProject.OBSStudio
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgMsys2
+      settings:
+        id: MSYS2.MSYS2
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgOffice
+      settings:
+        id: Microsoft.Office
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPowerShell
+      settings:
+        id: Microsoft.PowerShell
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgHwinfo
+      settings:
+        id: REALiX.HWiNFO
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgCmake
+      settings:
+        id: Kitware.CMake
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgDockerDesktop
+      settings:
+        id: Docker.DockerDesktop
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgKeePassXC
+      settings:
+        id: KeePassXCTeam.KeePassXC
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgDoxygen
+      settings:
+        id: DimitriVanHeesch.Doxygen
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgTemurin21
+      settings:
+        id: EclipseAdoptium.Temurin.21.JDK
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgTemurin25
+      settings:
+        id: EclipseAdoptium.Temurin.25.JDK
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgGit
+      settings:
+        id: Git.Git
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgKiCad
+      settings:
+        id: KiCad.KiCad
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgLocalSend
+      settings:
+        id: LocalSend.LocalSend
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgLtspice
+      settings:
+        id: AnalogDevices.LTspice
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgObsidian
+      settings:
+        id: Obsidian.Obsidian
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPodman
+      settings:
+        id: RedHat.Podman
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPythonInstallManager
+      settings:
+        id: Python.PythonInstallManager
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgCura
+      settings:
+        id: Ultimaker.Cura
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgVlc
+      settings:
+        id: VideoLAN.VLC
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgWebex
+      settings:
+        id: Cisco.Webex
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgZoom
+      settings:
+        id: Zoom.Zoom
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgXmake
+      settings:
+        id: Xmake-io.Xmake
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgMikTex
+      settings:
+        id: MiKTeX.MiKTeX
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgESword
+      settings:
+        id: RickMeyers.e-Sword
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgDrawio
+      settings:
+        id: JGraph.Draw
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgRustup
+      settings:
+        id: Rustlang.Rustup
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgNuGet
+      settings:
+        id: Microsoft.NuGet
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgVSLocator
+      settings:
+        id: Microsoft.VisualStudio.Locator
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgOctave
+      settings:
+        id: GNU.Octave
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPowerToys
+      settings:
+        id: Microsoft.PowerToys
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgIntelOneApi
+      settings:
+        id: Intel.OneAPI.BaseToolkit
+        source: winget
+
