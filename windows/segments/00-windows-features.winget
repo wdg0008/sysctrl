@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: opensshClientFeature
+      directives:
+        description: Ensure OpenSSH Client is enabled
+      settings:
+        Name: OpenSSH.Client
+        Ensure: Present
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: wslFeature
+      directives:
+        description: Ensure Windows Subsystem for Linux feature is enabled
+      settings:
+        Name: Microsoft-Windows-Subsystem-Linux
+        Ensure: Present
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: vmPlatformFeature
+      directives:
+        description: Ensure Virtual Machine Platform feature is enabled (WSL2)
+      settings:
+        Name: VirtualMachinePlatform
+        Ensure: Present
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: windowsSandboxFeature
+      directives:
+        description: Ensure Windows Sandbox feature is enabled
+      settings:
+        Name: Containers-DisposableClientVM
+        Ensure: Present
+
+    - resource: PSDscResources/WindowsOptionalFeature
+      id: windowsContainerFeature
+      directives:
+        description: Ensure Containers is enabled
+      settings:
+        Name: Containers
+        Ensure: Present

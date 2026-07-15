@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: removeSolitaire
+      settings:
+        id: 9WZDNCRFJ3PV
+        source: msstore
+        ensure: Absent
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: removeLinkedIn
+      settings:
+        id: 9NDLX60WX4KQ
+        source: msstore
+        ensure: Absent
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: removeOfficeHub
+      settings:
+        id: 9MSVH128X2ZT
+        source: msstore
+        ensure: Absent
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: removeClipchamp
+      settings:
+        id: 9P1J8S7CCWWT
+        source: msstore
+        ensure: Absent

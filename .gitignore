@@ -1,0 +1,29 @@
+# Generic backup files
+*.bak
+*.back
+*.backup
+
+# Norton Ghost backup files
+*.gho
+
+# Generic original files
+*.ori
+*.orig
+*.original
+
+# Generic temporary files
+*.tmps
+*.temp
+*.temporary
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!*.code-workspace
+
+# Built Visual Studio Code Extensions
+*.vsix

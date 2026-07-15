@@ -163,159 +163,191 @@ properties:
       settings:
         id: OBSProject.OBSStudio
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgMsys2
       settings:
         id: MSYS2.MSYS2
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgOffice
       settings:
         id: Microsoft.Office
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgPowerShell
       settings:
         id: Microsoft.PowerShell
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgHwinfo
       settings:
         id: REALiX.HWiNFO
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgCmake
       settings:
         id: Kitware.CMake
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgDockerDesktop
       settings:
         id: Docker.DockerDesktop
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgKeePassXC
       settings:
         id: KeePassXCTeam.KeePassXC
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgDoxygen
       settings:
         id: DimitriVanHeesch.Doxygen
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgTemurin21
       settings:
         id: EclipseAdoptium.Temurin.21.JDK
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgTemurin25
       settings:
         id: EclipseAdoptium.Temurin.25.JDK
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgGit
       settings:
         id: Git.Git
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgKiCad
       settings:
         id: KiCad.KiCad
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgLocalSend
       settings:
         id: LocalSend.LocalSend
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgLtspice
       settings:
         id: AnalogDevices.LTspice
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgObsidian
       settings:
         id: Obsidian.Obsidian
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgPodman
       settings:
         id: RedHat.Podman
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgPythonInstallManager
       settings:
         id: Python.PythonInstallManager
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgCura
       settings:
         id: Ultimaker.Cura
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgVlc
       settings:
         id: VideoLAN.VLC
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgWebex
       settings:
         id: Cisco.Webex
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgZoom
       settings:
         id: Zoom.Zoom
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgXmake
       settings:
         id: Xmake-io.Xmake
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgMikTex
       settings:
         id: MiKTeX.MiKTeX
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgESword
       settings:
         id: RickMeyers.e-Sword
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgDrawio
       settings:
         id: JGraph.Draw
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgRustup
       settings:
         id: Rustlang.Rustup
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgNuGet
       settings:
         id: Microsoft.NuGet
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgVSLocator
       settings:
         id: Microsoft.VisualStudio.Locator
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgOctave
       settings:
         id: GNU.Octave
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgPowerToys
       settings:
         id: Microsoft.PowerToys
         source: winget
+
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgIntelOneApi
       settings:
         id: Intel.OneAPI.BaseToolkit
         source: winget
+
 

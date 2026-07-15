@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgLibreOffice
+      settings:
+        id: TheDocumentFoundation.LibreOffice
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgOffice
+      settings:
+        id: Microsoft.Office
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgDrawIO
+      settings:
+        id: JGraph.Draw
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgMikTex
+      settings:
+        id: MiKTex.MiKTeX
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgLibreOffice
+      settings:
+        id: TheDocumentFoundation.LibreOffice
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgObsidian
+      settings:
+        id: Obsidian.Obsidian
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgScan
+      settings:
+        id: 9WZDNCRFJ3PV
+        source: msstore

@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgHWiNFO
+      settings:
+        id: REALiX.HWiNFO
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgGPUz
+      settings:
+        id: TechPowerUp.GPU-Z 
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgTIConnect
+      settings:
+        id: TexasInstruments.TIConnect
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgObsStudio
+      settings:
+        id: OBSProject.OBSStudio
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgKeePassXC
+      settings:
+        id: KeePassXCTeam.KeePassXC
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgLocalSend
+      settings:
+        id: LocalSend.LocalSend
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgVLC
+      settings:
+        id: VideoLAN.VLC
+        source: winget

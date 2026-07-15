@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgLtspice
+      settings:
+        id: AnalogDevices.LTspice
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgKiCad
+      settings:
+        id: KiCad.KiCad
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgCura
+      settings:
+        id: Ultimaker.Cura
+        source: winget
+
+# RIP TI CCS, STMCube, Digilent waveforms, and Altera and Xilinx FPGA tools

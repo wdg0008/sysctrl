@@ -1,0 +1,137 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgCmake
+      settings:
+        id: Kitware.CMake
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgDockerDesktop
+      settings:
+        id: Docker.DockerDesktop
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgGit
+      settings:
+        id: Git.Git
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgNuGet
+      settings:
+        id: Microsoft.NuGet
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgOctave
+      settings:
+        id: GNU.Octave
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPodman
+      settings:
+        id: RedHat.Podman
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPowerShell
+      settings:
+        id: Microsoft.PowerShell
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPowerToys
+      settings:
+        id: Microsoft.PowerToys
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPythonInstallManager
+      settings:
+        id: Python.PythonInstallManager
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgRustup
+      settings:
+        id: Rustlang.Rustup
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgTemurin25
+      settings:
+        id: EclipseAdoptium.Temurin.25.JDK
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgVSCode
+      settings:
+        id: Microsoft.VisualStudioCode
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgVSLocator
+      settings:
+        id: Microsoft.VisualStudio.Locator
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgXmake
+      settings:
+        id: Xmake-io.Xmake
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgDoxygen
+      settings:
+        id: DimitriVanHeesch.Doxygen
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPuTTY
+      settings:
+        id: PuTTY.PuTTY
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgMobaXTerm
+      settings:
+        id: Mobatek.MobaXterm
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgWinUI2Gallery
+      settings:
+        id: 9MSVH128X2ZT
+        source: msstore
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgWinUI3Gallery
+      settings:
+        id: 9P3JFPWWDZRC
+        source: msstore
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgWPFGallery
+      settings:
+        id: 9NDLX60WX4KQ
+        source: msstore
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgCommunityToolkitGallery
+      settings:
+        id: 9NBLGGH4TLCQ
+        source: msstore
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgMVVMToolkit
+      settings:
+        id: 9NKLCF1LVZ5H
+        source: msstore

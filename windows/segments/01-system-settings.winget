@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    - resource: PSDscResources/Registry
+      id: enableSudo
+      directives:
+        description: Enable Sudo for Windows (Windows 11 24H2+)
+      settings:
+        Key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo
+        ValueName: Enabled
+        ValueType: Dword
+        ValueData:
+          - "1"
+        Ensure: Present
+
+    - resource: PSDscResources/Registry
+      id: setSudoMode
+      dependsOn:
+        - enableSudo
+      directives:
+        description: Set Sudo mode to Input Disabled (secure mode)
+      settings:
+        Key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo
+        ValueName: DefaultMode
+        ValueType: Dword
+        ValueData:
+          - "2"
+        Ensure: Present
+
+    - resource: PSDscResources/Registry
+      id: enableLongPaths
+      directives:
+        description: Remove MAX_PATH limitation
+      settings:
+        Key: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem
+        ValueName: LongPathsEnabled
+        ValueType: Dword
+        ValueData:
+          - "1"
+        Ensure: Present
+
+    - resource: Microsoft.Windows.Settings/WindowsSettings
+      directives:
+        description: Apply Windows Settings
+        allowPrerelease: true
+        securityContext: elevated
+      settings:
+        DeveloperMode: true
+        SystemColorMode: Dark
+        TaskbarAlignment: Left
+        AppColorMode: Dark
