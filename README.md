@@ -18,3 +18,12 @@ windows/
   │   ├── 05-containers.winget        # Docker, Podman
   │   └── 06-productivity-apps.winget # Obsidian, VLC, KeePass, etc.
 ```
+## TODO
+
+- [ ] Add PowerShell orchestrator
+- [ ] Add selection of combination of files
+- [ ] Verify dependencies and proper installation
+- [ ] Update gitignore and gitattributes for PowerShell
+- [ ] Validate each sub-file
+- [ ] Add brew packages and casks for macOS
+- [ ] Add apt scripts for Ubuntu 26 LTS

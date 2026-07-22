@@ -45,3 +45,15 @@ properties:
       settings:
         id: VideoLAN.VLC
         source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgMicroDICOM
+      settings:
+        id: MicroDicom.DICOMViewer
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkg
+      settings:
+        id: RickMeyers.e-Sword
+        source: winget
