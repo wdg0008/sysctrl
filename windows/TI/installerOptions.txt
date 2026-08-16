@@ -1,0 +1,43 @@
+See https://software-dl.ti.com/ccs/esd/documents/ccs_installer-cli.html
+
+Usage:
+
+--help                                      Display the list of valid options
+
+--version                                   Display product information
+
+--unattendedmodeui <unattendedmodeui>       Unattended Mode UI (only when running in unattended mode)
+                                             Default: none
+                                             Allowed: none minimal minimalWithDialogs
+
+--optionfile <optionfile>                   Installation option file
+                                             Default:
+
+--debuglevel <debuglevel>                   Debug information level of verbosity
+                                             Default: 2
+                                             Allowed: 0 1 2 3 4
+
+--mode <mode>                               Installation mode
+                                             Default: [Run with --help to see os-specific default]
+                                             Allowed: [Run with --help to see os-specific default] unattended
+
+--debugtrace <debugtrace>                   Debug filename
+                                             Default:
+
+--enable-components <enable-components>     Comma-separated list of components
+                                             Default: PF_AM13X,PF_SITARA_MCU,PF_ARM_MPU,PF_C28,PF_C6000SC,PF_HERCULES,PF_MMWAVE,PF_MSP430,PF_MSPM0,PF_MSPM33,PF_OMAPL,PF_PGA,PF_MSP432,PF_AUTO,PF_TM4C,PF_DIGITAL_POWER,PF_WCONN
+                                             Allowed: PF_AM13X PF_SITARA_MCU PF_ARM_MPU PF_C28 PF_C6000SC PF_HERCULES PF_MMWAVE PF_MSP430 PF_MSPM0 PF_MSPM33 PF_OMAPL PF_PGA PF_MSP432 PF_AUTO PF_TM4C PF_DIGITAL_POWER PF_WCONN
+
+--disable-components <disable-components>   Comma-separated list of components
+                                             Default:
+                                             Allowed: PF_AM13X PF_SITARA_MCU PF_ARM_MPU PF_C28 PF_C6000SC PF_HERCULES PF_MMWAVE PF_MSP430 PF_MSPM0 PF_MSPM33 PF_OMAPL PF_PGA PF_MSP432 PF_AUTO PF_TM4C PF_DIGITAL_POWER PF_WCONN
+
+--installer-language <installer-language>   Language selection
+                                             Default: en
+                                             Allowed: en
+
+--prefix <prefix>                           Installation Directory
+                                             Default: [Run with --help to see default installation directory]
+
+--errortrace <errortrace>                   Error trace filename
+                                             Default:
