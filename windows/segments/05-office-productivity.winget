@@ -29,12 +29,6 @@ properties:
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgLibreOffice
-      settings:
-        id: TheDocumentFoundation.LibreOffice
-        source: winget
-
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgObsidian
       settings:
         id: Obsidian.Obsidian
