@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  configurationVersion: 0.2.1
+  resources:
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPowerShell
+      settings:
+        id: Microsoft.PowerShell
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPythonInstallManager
+      settings:
+        id: Python.PythonInstallManager
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgWinUI2Gallery
+      settings:
+        id: 9MSVH128X2ZT
+        source: msstore
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgWinUI3Gallery
+      settings:
+        id: 9P3JFPWWDZRC
+        source: msstore
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgWPFGallery
+      settings:
+        id: 9NDLX60WX4KQ
+        source: msstore
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgCommunityToolkitGallery
+      settings:
+        id: 9NBLGGH4TLCQ
+        source: msstore
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgMVVMToolkit
+      settings:
+        id: 9NKLCF1LVZ5H
+        source: msstore

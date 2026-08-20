@@ -5,25 +5,19 @@ properties:
   resources:
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgWebex
+      id: pkgTIConnect
       settings:
-        id: Cisco.Webex
+        id: TexasInstruments.TIConnect
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgZoom
+      id: pkgLocalSend
       settings:
-        id: Zoom.Zoom
+        id: LocalSend.LocalSend
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgDiscord
+      id: pkgESword
       settings:
-        id: Discord.Discord
-        source: winget
-
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgTeams
-      settings:
-        id: Microsoft.Teams
+        id: RickMeyers.e-Sword
         source: winget

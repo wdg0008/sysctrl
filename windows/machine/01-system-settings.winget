@@ -15,6 +15,7 @@ properties:
         ValueData:
           - "1"
         Ensure: Present
+        Force: true
 
     - resource: PSDscResources/Registry
       id: setSudoMode
@@ -29,6 +30,7 @@ properties:
         ValueData:
           - "2"
         Ensure: Present
+        Force: true
 
     - resource: PSDscResources/Registry
       id: enableLongPaths
@@ -41,6 +43,7 @@ properties:
         ValueData:
           - "1"
         Ensure: Present
+        force: true
 
     - resource: Microsoft.Windows.Settings/WindowsSettings
       directives:

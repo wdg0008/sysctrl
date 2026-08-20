@@ -11,7 +11,7 @@
 #     exit
 # }
 
-$wingetFiles = Get-ChildItem -Path (Get-Location) -Filter '*.winget' -File
+$wingetFiles = Get-ChildItem -Path (Get-Location) -Filter '*.winget' -File -Recurse
 
 if (-not $wingetFiles) {
     Write-Host 'No .winget files found in the current working directory.'

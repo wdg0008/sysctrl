@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://aka.ms/dsc/schemas/v3/bundled/config/document.vscode.json
+$schema: https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json
+metadata:
+  winget:
+    processor:
+      identifier: dscv3
+
+resources:
+
+  - name: Install draw.io
+    type: Microsoft.WinGet/Package
+    metadata:
+      module: Microsoft.WinGet
+    properties:
+      id: JGraph.Draw
+      source: winget
+
+  - name: Install MiKTeX
+    type: Microsoft.WinGet/Package
+    metadata:
+      module: Microsoft.WinGet
+    properties:
+      id: MiKTex.MiKTeX
+      source: winget
+
+  - name: Install Obsidian
+    type: Microsoft.WinGet/Package
+    metadata:
+      module: Microsoft.WinGet
+    properties:
+      id: Obsidian.Obsidian
+      source: winget
+
+  - name: Install Microsoft Store Scan app
+    type: Microsoft.WinGet/Package
+    metadata:
+      module: Microsoft.WinGet
+    properties:
+      id: 9WZDNCRFJ3PV
+      source: msstore

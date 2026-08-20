@@ -5,37 +5,37 @@ properties:
   resources:
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgLibreOffice
+      id: pkgHWiNFO
       settings:
-        id: TheDocumentFoundation.LibreOffice
+        id: REALiX.HWiNFO
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgOffice
+      id: pkgGPUz
       settings:
-        id: Microsoft.Office
+        id: TechPowerUp.GPU-Z 
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgDrawIO
+      id: pkgObsStudio
       settings:
-        id: JGraph.Draw
+        id: OBSProject.OBSStudio
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgMikTex
+      id: pkgKeePassXC
       settings:
-        id: MiKTex.MiKTeX
+        id: KeePassXCTeam.KeePassXC
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgObsidian
+      id: pkgVLC
       settings:
-        id: Obsidian.Obsidian
+        id: VideoLAN.VLC
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgScan
+      id: pkgMicroDICOM
       settings:
-        id: 9WZDNCRFJ3PV
-        source: msstore
+        id: MicroDicom.DICOMViewer
+        source: winget
