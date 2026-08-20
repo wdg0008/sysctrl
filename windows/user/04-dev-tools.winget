@@ -17,6 +17,12 @@ properties:
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgPowerToys
+      settings:
+        id: Microsoft.PowerToys
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgWinUI2Gallery
       settings:
         id: 9MSVH128X2ZT

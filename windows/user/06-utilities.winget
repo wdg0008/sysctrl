@@ -21,3 +21,9 @@ properties:
       settings:
         id: RickMeyers.e-Sword
         source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: pkgDiscord
+      settings:
+        id: Discord.Discord
+        source: winget

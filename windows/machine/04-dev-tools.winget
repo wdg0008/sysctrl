@@ -52,12 +52,6 @@ properties:
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgPowerToys
-      settings:
-        id: Microsoft.PowerToys
-        source: winget
-
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgRustup
       settings:
         id: Rustlang.Rustup

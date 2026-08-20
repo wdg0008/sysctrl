@@ -29,3 +29,19 @@ resources:
     properties:
       id: Microsoft.Teams
       source: winget
+
+  - name: Install Zoom
+    type: Microsoft.WinGet/Package
+    metadata:
+      module: Microsoft.WinGet
+    properties:
+      id: pkgZoom
+      source: winget
+
+  - name: Install Webex
+    type: Microsoft.WinGet/Package
+    metadata:
+      module: Microsoft.WinGet
+    properties:
+      id: pkgWebex
+      source: winget
