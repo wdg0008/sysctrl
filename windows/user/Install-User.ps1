@@ -26,11 +26,6 @@ $packageGroups = @(
     @(
         "Dev Tools"
         @(
-            "9MSVH128X2ZT"
-            "9NBLGGH4TLCQ"
-            "9NDLX60WX4KQ"
-            "9NKLCF1LVZ5H"
-            "9P3JFPWWDZRC"
             "Microsoft.PowerShell"
             "Microsoft.PowerToys"
             "Python.PythonInstallManager"
@@ -52,6 +47,16 @@ $packageGroups = @(
             "LocalSend.LocalSend"
             "RickMeyers.e-Sword"
             "Discord.Discord"
+        )
+    )
+    @(
+        "Microsoft Store Apps"
+        @(
+            "9MSVH128X2ZT" # WinUI 2 Gallery
+            "9NBLGGH4TLCQ" # Windows Community Toolkit Sample App
+            "9NDLX60WX4KQ" # WPF Gallery
+            "9NKLCF1LVZ5H" # CommunityToolkit.MVVM Sample App
+            "9P3JFPWWDZRC" # WinUI 3 Gallery
         )
     )
 )

@@ -8,7 +8,8 @@
     .\Install-Machine.ps1
 #>
 
-if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+if (-not ([Security.Principal.WindowsPrincipal] 
+    `[Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     $currentHost = (Get-Process -Id $PID).Path
     $currentDirectory = (Get-Location).Path
     $arguments = @(
@@ -19,6 +20,30 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
     Start-Process -FilePath $currentHost -ArgumentList $arguments -WorkingDirectory $currentDirectory -Verb RunAs
     exit
+}
+
+# Begin by running basic system configuration with DSC to prepare Windows and Visual Studio
+
+$wingetConfigureArguments = @(
+    'configure'
+    '--accept-configuration-agreements'
+)
+
+$configurationFiles = @(
+    '00-windows-features.ps1'
+    '01-system-settings.winget'
+    '03-compiler-toolchains.winget'
+)
+
+foreach ($configurationFile in $configurationFiles) {
+    $configurationPath = Join-Path $PSScriptRoot $configurationFile
+    Write-Host "Applying $configurationFile..." -ForegroundColor Yellow
+
+    & winget @wingetConfigureArguments $configurationPath
+
+    if ($LASTEXITCODE -ne 0) {
+        throw "WinGet failed to apply $configurationFile with exit code $LASTEXITCODE."
+    }
 }
 
 Write-Host "Installing machine-scope packages...`n" -ForegroundColor Cyan

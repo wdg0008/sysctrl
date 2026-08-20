@@ -57,6 +57,8 @@ properties:
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgIntelOneApi
+      dependsOn:
+        - vsPackage
       settings:
         id: Intel.OneAPI.BaseToolkit
         source: winget
