@@ -8,6 +8,10 @@
     .\Install-User.ps1
 #>
 
+Write-Host "Removing adware...`n" -ForegroundColor Cyan
+
+winget configure --accept-configuration-agreements .\app-removals.winget
+
 Write-Host "Installing user-scope packages...`n" -ForegroundColor Cyan
 
 $wingetArguments = @(
@@ -18,52 +22,48 @@ $wingetArguments = @(
     "--silent"
 )
 
-# Object[]
-# ├── String       # 'Dev Tools'
-# └── Object[]     # package IDs
-
 $packageGroups = @(
-    @(
-        "Dev Tools"
-        @(
+    [pscustomobject]@{
+        Name = "Dev Tools"
+        PackageIds = @(
             "Microsoft.PowerShell"
             "Microsoft.PowerToys"
             "Python.PythonInstallManager"
         )
-    )
-    @(
-        "Office and Productivity"
-        @(
+    }
+    [pscustomobject]@{
+        Name = "Office and Productivity"
+        PackageIds = @(
             "9WZDNCRFJ3PV"
             "JGraph.Draw"
             "MiKTex.MiKTeX"
             "Obsidian.Obsidian"
         )
-    )
-    @(
-        "Utilities"
-        @(
+    }
+    [pscustomobject]@{
+        Name = "Utilities"
+        PackageIds = @(
             "TexasInstruments.TIConnect"
             "LocalSend.LocalSend"
             "RickMeyers.e-Sword"
             "Discord.Discord"
         )
-    )
-    @(
-        "Microsoft Store Apps"
-        @(
+    }
+    [pscustomobject]@{
+        Name = "Microsoft Store Apps"
+        PackageIds = @(
             "9MSVH128X2ZT" # WinUI 2 Gallery
             "9NBLGGH4TLCQ" # Windows Community Toolkit Sample App
             "9NDLX60WX4KQ" # WPF Gallery
             "9NKLCF1LVZ5H" # CommunityToolkit.MVVM Sample App
             "9P3JFPWWDZRC" # WinUI 3 Gallery
         )
-    )
+    }
 )
 
 foreach ($group in $packageGroups) {
-    $groupName = $group[0]
-    $packageIds = $group[1]
+    $groupName = $group.Name
+    $packageIds = $group.PackageIds
 
     Write-Host "Installing $groupName...`n" -ForegroundColor Yellow
 

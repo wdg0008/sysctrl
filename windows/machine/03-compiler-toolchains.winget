@@ -30,6 +30,7 @@ properties:
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: sdkPackage
       directives:
+        securityContext: elevated
         description: Install Windows SDK version 28000
         allowPrerelease: true
       settings:
@@ -42,6 +43,7 @@ properties:
       dependsOn:
         - sdkPackage
       directives:
+        securityContext: elevated
         description: Install Windows Driver Kit version 28000
         allowPrerelease: true
       settings:
@@ -58,10 +60,14 @@ properties:
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgIntelOneApi
       dependsOn:
-        - vsPackage
+        - vsComponents
+      directives:
+        description: Install Intel OneAPI Toolkit
+        securityContext: elevated
       settings:
-        id: Intel.OneAPI.BaseToolkit
+        id: Intel.OneAPI.Toolkit
         source: winget
+        override: '-a --silent --eula accept -p=NEED_VS2022_INTEGRATION=1 -p=NEED_VS2026_INTEGRATION=1'
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgEIM
