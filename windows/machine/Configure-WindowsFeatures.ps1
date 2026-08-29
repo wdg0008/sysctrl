@@ -2,8 +2,31 @@
 .SYNOPSIS
     Installs and enables core Windows functionality
 .DESCRIPTION
-    Sets up WSL, Windows Sandbox, Hyper-V, and other goodies as optional features and capabilities
+    Sets up WSL, Windows Sandbox, Hyper-V, and other goodies as optional features and capabilities.
+    Called by Install-Machine.ps1 to prepare the system for package installation.
+    Requires administrative rights to run.
+.EXAMPLE
+    .\Configure-WindowsFeatures.ps1
 #>
+
+using namespace System.Security.Principal
+
+$identity = [WindowsIdentity]::GetCurrent()
+$principal = [WindowsPrincipal]::new($identity)
+
+if (-not $principal.IsInRole([WindowsBuiltInRole]::Administrator))
+{
+    $currentHost = (Get-Process -Id $PID).Path
+    $currentDirectory = (Get-Location).Path
+    $arguments = @(
+        '-NoProfile'
+        '-ExecutionPolicy', 'Bypass'
+        '-File', "`"$PSCommandPath`""
+    )
+
+    Start-Process -FilePath $currentHost -ArgumentList $arguments -WorkingDirectory $currentDirectory -Verb RunAs
+    exit
+}
 
 # installed from "Add features to Windows"
 # List with `Get-WindowsOptionalFeature -Online`

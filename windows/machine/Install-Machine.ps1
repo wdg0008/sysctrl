@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    This script installs all machine-scope packages defined in the script.
+    This script installs all machine-scope packages that it declares in the $packageGroups variable using WinGet.
 .DESCRIPTION
     This script requires administrative rights to work because some packages are installed for the whole system.
     It defines a list of package groups and their corresponding package IDs, and installs them using WinGet.
@@ -8,8 +8,13 @@
     .\Install-Machine.ps1
 #>
 
-if (-not ([Security.Principal.WindowsPrincipal] 
-    `[Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+using namespace System.Security.Principal
+
+$identity = [WindowsIdentity]::GetCurrent()
+$principal = [WindowsPrincipal]::new($identity)
+
+if (-not $principal.IsInRole([WindowsBuiltInRole]::Administrator))
+{
     $currentHost = (Get-Process -Id $PID).Path
     $currentDirectory = (Get-Location).Path
     $arguments = @(
@@ -23,6 +28,7 @@ if (-not ([Security.Principal.WindowsPrincipal]
 }
 
 # Begin by running basic system configuration with DSC to prepare Windows and Visual Studio
+& $PSScriptRoot\Configure-WindowsFeatures.ps1
 
 $wingetConfigureArguments = @(
     'configure'
@@ -30,7 +36,6 @@ $wingetConfigureArguments = @(
 )
 
 $configurationFiles = @(
-    '00-windows-features.ps1'
     '01-system-settings.winget'
     '03-compiler-toolchains.winget'
 )
@@ -56,74 +61,43 @@ $wingetArguments = @(
     '--silent'
 )
 
-# Object[]
-# ├── String       # 'Dev Tools'
-# └── Object[]     # package IDs
-
-$packageGroups = @(
-    @(
-        'Dev Tools'
-        @(
-            'Docker.DockerDesktop'
-            'RedHat.Podman'
-            'Kitware.CMake'
-            'Git.Git'
-            'GNU.Octave'
-            'Rustlang.Rustup'
-            'EclipseAdoptium.Temurin.25.JDK'
-            'Microsoft.VisualStudioCode'
-            'Microsoft.VisualStudio.Locator'
-            'Xmake-io.Xmake'
-            'DimitriVanHeesch.Doxygen'
-            'PuTTY.PuTTY'
-            'Mobata.MobaXterm'
-        )
-    )
-    @(
-        'Office and Productivity'
-        @(
-            'TheDocumentFoundation.LibreOffice'
-            'Microsoft.Office'
-            'Microsoft.Teams'
-            'Zoom.Zoom'
-            'Webex.Webex'
-        )
-    )
-    @(
-        'Utilities'
-        @(
-            'REALiX.HWiNFO'
-            'TechPowerUp.GPU-z'
-            'OBSProject.OBSStudio'
-            'KeePassXCTeam.KeePassXC'
-            'VideoLAN.VLC'
-            'MicroDicom.DICOMViewer'
-        )
-    )
-    @(
-        'Design Tools'
-        @(
-            'AnalogDevices.LTspice'
-            'KiCad.Kicad'
-            'Ultimaker.Cura'
-        )
-    )
+$packageIds = @(
+    # Dev Tools
+    'Docker.DockerDesktop'
+    'RedHat.Podman'
+    'Kitware.CMake'
+    'Git.Git'
+    'GNU.Octave'
+    'Rustlang.Rustup'
+    'EclipseAdoptium.Temurin.25.JDK'
+    'Microsoft.VisualStudioCode'
+    'Microsoft.VisualStudio.Locator'
+    'Xmake-io.Xmake'
+    'DimitriVanHeesch.Doxygen'
+    'PuTTY.PuTTY'
+    'Mobata.MobaXterm'
+    'Microsoft.PowerToys'
+    # Office and Productivity
+    'TheDocumentFoundation.LibreOffice'
+    'Microsoft.Office'
+    'Microsoft.Teams'
+    'Zoom.Zoom'
+    'Webex.Webex'
+    # Utilities
+    'REALiX.HWiNFO'
+    'TechPowerUp.GPU-z'
+    'OBSProject.OBSStudio'
+    'KeePassXCTeam.KeePassXC'
+    'VideoLAN.VLC'
+    'MicroDicom.DICOMViewer'
+    'TexasInstruments.TIConnect' # No user-scope package
+    # Design Tools
+    'AnalogDevices.LTspice'
+    'KiCad.Kicad'
+    'Ultimaker.Cura'
 )
 
-foreach ($group in $packageGroups) {
-    $groupName = $group[0]
-    $packageIds = $group[1]
-
-    Write-Host "Installing $groupName...`n" -ForegroundColor Yellow
-
-    foreach ($packageId in $packageIds) {
-        Write-Host "Installing $packageId..."
-        winget @wingetArguments --id $packageId
-
-        if ($LASTEXITCODE -ne 0) {
-            throw "WinGet failed to install $packageId with exit code $LASTEXITCODE."
-        }
-    }
+foreach ($packageId in $packageIds) {
+    Write-Host "Installing $packageId..."
+    winget @wingetArguments --id $packageId
 }
-
-Write-Host "`nAll machine-scope packages have been installed successfully.`n`n" -ForegroundColor Green
