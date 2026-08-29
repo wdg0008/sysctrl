@@ -1,0 +1,12 @@
+# Use this manifest file to list package names exactly as they will be installed
+# ------------------------------------------------------------------------------
+
+# MSYS2 basic development environment
+base-devel
+
+# UCRT64 libraries
+mingw-w64-ucrt-x86_64-toolchain
+
+# Build System
+cmake
+ninja
