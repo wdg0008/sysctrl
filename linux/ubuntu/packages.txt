@@ -1,0 +1,22 @@
+# Ubuntu >= 24.X package manifest
+# Use this with setup.sh to install packages listed here
+
+# Build Toolchains
+build-essential
+gdb
+ninja-build
+cmake
+cmake-gui
+cmake-format
+
+# LLVM Toolchains
+clang
+clang-format
+clang-tidy
+clang-tools
+clangd
+clazy
+lldb
+
+# Other Utilities
+zip
