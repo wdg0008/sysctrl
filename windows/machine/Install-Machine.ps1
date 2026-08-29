@@ -13,17 +13,23 @@ using namespace System.Security.Principal
 $identity = [WindowsIdentity]::GetCurrent()
 $principal = [WindowsPrincipal]::new($identity)
 
-if (-not $principal.IsInRole([WindowsBuiltInRole]::Administrator))
-{
-    $currentHost = (Get-Process -Id $PID).Path
-    $currentDirectory = (Get-Location).Path
+if (-not $principal.IsInRole([WindowsBuiltInRole]::Administrator)) {
+    $scriptPath = $PSCommandPath
+    if ([string]::IsNullOrWhiteSpace($scriptPath)) {
+        throw "This script must be launched from a file path in an elevated Windows PowerShell session."
+    }
+
+    Write-Host "This script requires Administrator privileges to install machine-wide software and configure Windows features." -ForegroundColor Yellow
+    Write-Host "Opening an elevated PowerShell window to continue..." -ForegroundColor Yellow
+
+    $powershellExe = Join-Path $env:WINDIR 'System32\WindowsPowerShell\v1.0\powershell.exe'
     $arguments = @(
         '-NoProfile'
         '-ExecutionPolicy', 'Bypass'
-        '-File', "`"$PSCommandPath`""
+        '-File', $scriptPath
     )
 
-    Start-Process -FilePath $currentHost -ArgumentList $arguments -WorkingDirectory $currentDirectory -Verb RunAs
+    Start-Process -FilePath $powershellExe -ArgumentList $arguments -WorkingDirectory (Get-Location).Path -Verb RunAs -Wait
     exit
 }
 
@@ -60,6 +66,9 @@ $wingetArguments = @(
     '--accept-package-agreements'
     '--silent'
 )
+
+# Configuration DOES NOT support override arguments, so this has to be done manually
+winget @wingetArguments --id Intel.OneAPI.Toolkit --source winget --override "-a --silent --eula accept -p=NEED_VS2022_INTEGRATION=1 -p=NEED_VS2026_INTEGRATION=1"
 
 $packageIds = @(
     # Dev Tools

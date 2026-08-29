@@ -1,0 +1,185 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": [],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "keybindings":
+    [
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        }
+    ],
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles":
+    {
+        "defaults": {},
+        "list":
+        [
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{09f85475-0fcf-5619-8717-74d8e58f8f7b}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{b0f394ca-3fc8-5671-8122-cf4af7c3ff50}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "hidden": true,
+                "name": "Visual Studio Debug Console",
+                "source": "VSDebugConsole"
+            },
+            {
+                "guid": "{77833074-b024-5837-98bd-d196b639fc9b}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 18",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{753894ca-0f9d-5720-a529-1424e8de741e}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 18",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "commandline": "C:\\Windows\\System32\\cmd.exe /E:ON /K \"\"C:\\Program Files (x86)\\Intel\\oneAPI\\setvars.bat\" intel64 vs2022\"",
+                "guid": "{9c943cb8-6d27-449b-ab73-af93fae7327e}",
+                "hidden": false,
+                "name": "Intel oneAPI x64 VS 2022",
+                "startingDirectory": "C:\\Program Files (x86)\\Intel\\oneAPI"
+            },
+            {
+                "commandline": "C:\\Windows\\System32\\cmd.exe /E:ON /K \"\"C:\\Program Files (x86)\\Intel\\oneAPI\\setvars.bat\" intel64 vs2026\"",
+                "guid": "{0e1feef0-7da2-4c58-aa42-97d73297b051}",
+                "hidden": false,
+                "name": "Intel oneAPI x64 VS 2026",
+                "startingDirectory": "C:\\Program Files (x86)\\Intel\\oneAPI"
+            },
+            {
+                "guid": "{e6e722fe-629a-454e-8874-f77018780eee}",
+                "commandline": "%PROGRAMFILES%/Git/bin/bash.exe -i -l",
+                "icon": "%PROGRAMFILES%/Git/mingw64/share/git/git-for-windows.ico",
+                "name" : "Git Bash",
+                "startingDirectory" : "%USERPROFILE%"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -msys2 -shell bash",
+                "font": 
+                {
+                    "size": 10
+                },
+                "guid": "{6f0ee3d1-ac4f-48ca-bcf5-a9795f9942d2}",
+                "hidden": false,
+                "icon": "C:/msys64/msys2.ico",
+                "name": "MSYS2: msys2",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw32 -shell bash",
+                "font": 
+                {
+                    "size": 10
+                },
+                "guid": "{80414396-5ef4-490b-af88-29600c19ca4a}",
+                "hidden": false,
+                "icon": "C:/msys64/mingw32.ico",
+                "name": "MSYS2: mingw32",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64 -shell bash",
+                "font": 
+                {
+                    "size": 10
+                },
+                "guid": "{aef16ae0-7dd1-4ac7-abd8-60a646abb9ca}",
+                "hidden": false,
+                "icon": "C:/msys64/mingw64.ico",
+                "name": "MSYS2: mingw64",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64 -shell bash",
+                "font": 
+                {
+                    "size": 10
+                },
+                "guid": "{a718a3d5-9e77-4d0d-b7b6-69ec3d190206}",
+                "hidden": false,
+                "icon": "C:/msys64/ucrt64.ico",
+                "name": "MSYS2: ucrt64 (default)",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -clang64 -shell bash",
+                "font": 
+                {
+                    "size": 10
+                },
+                "guid": "{1f2869c0-1310-403b-93a7-9227f42eeb24}",
+                "hidden": false,
+                "icon": "C:/msys64/clang64.ico",
+                "name": "MSYS2: clang64",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -clangarm64 -shell bash",
+                "font": 
+                {
+                    "size": 10
+                },
+                "guid": "{ada1f939-0f7b-400c-b755-8cbff4fd40a8}",
+                "hidden": false,
+                "icon": "C:/msys64/clangarm64.ico",
+                "name": "MSYS2: clangarm64",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            }
+        ]
+    },
+    "schemes": [],
+    "themes": []
+}

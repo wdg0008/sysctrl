@@ -58,18 +58,6 @@ properties:
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: pkgIntelOneApi
-      dependsOn:
-        - vsComponents
-      directives:
-        description: Install Intel OneAPI Toolkit
-        securityContext: elevated
-      settings:
-        id: Intel.OneAPI.Toolkit
-        source: winget
-        override: '-a --silent --eula accept -p=NEED_VS2022_INTEGRATION=1 -p=NEED_VS2026_INTEGRATION=1'
-
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: pkgEIM
       settings:
         id: Espressif.EIM
