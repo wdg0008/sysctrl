@@ -18,5 +18,11 @@ clangd
 clazy
 lldb
 
+# OpenMPI
+openmpi-bin
+openmpi-common
+libopenmpi40
+libopenmpi-dev
+
 # Other Utilities
 zip

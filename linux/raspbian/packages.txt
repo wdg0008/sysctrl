@@ -1,0 +1,26 @@
+# Raspbian Trixie package manifest
+# Use this with setup.sh to install packages listed here
+
+# Build Toolchains
+build-essential
+gdb
+ninja-build
+cmake
+cmake-format
+
+# LLVM Toolchains
+clang
+clang-format
+clang-tidy
+clang-tools
+clangd
+lldb
+
+# OpenMPI
+openmpi-bin
+openmpi-common
+libopenmpi40
+libopenmpi-dev
+
+# Other Utilities
+zip
